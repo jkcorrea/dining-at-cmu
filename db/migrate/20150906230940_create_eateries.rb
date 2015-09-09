@@ -4,6 +4,9 @@ class CreateEateries < ActiveRecord::Migration
       t.string :name
       t.text :summary
       t.string :photo
+      t.string :category
+      t.text :directions
+      t.references :location
 
       t.timestamps null: false
     end
