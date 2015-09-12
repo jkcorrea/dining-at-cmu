@@ -3,22 +3,3 @@ class Menu < ActiveRecord::Base
 
   MENU_TYPES = ["Main", "Specials"]
 end
-
-
-# Resnik
-# CMC cafe/resnik
-# taste of india
-# tartans pizza
-
-# UC
-# Entropy
-# Gallo
-# Creperie
-# Skibo
-
-# Tepper
-# The Exchange
-
-# Wean
-# La Prima
-
