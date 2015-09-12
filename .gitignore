@@ -26,3 +26,6 @@ config/settings.yml
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
+
+#Dropbox conflicted copies
+*conflicted copy*
