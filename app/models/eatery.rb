@@ -4,7 +4,7 @@ class Eatery < ActiveRecord::Base
 
   EATERY_TYPE = ["Full Service", "Snack Only"]
 
-  def open(at = Time.now)
+  def self.open(at = Time.now)
     time = at.seconds_since_midnight
     day = at.wday
     Eatery.joins(:open_blocks)
