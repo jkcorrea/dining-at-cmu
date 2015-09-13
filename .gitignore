@@ -29,3 +29,6 @@ config/secrets.yml
 
 # Dropbox conflicted copies
 *conflicted copy*
+
+# Fuse_hidden files
+.fuse_hidden*
