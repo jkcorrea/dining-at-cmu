@@ -17,70 +17,17 @@
       </div>
       </a>
 
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Mitchell's</p>
-      </div>
-      <%= image_tag 'mitchells.png' %>
-    </div>
-
-    <div class="location">Resnik</div>
-    
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Nakama Express</p>
-      </div>
-      <%= image_tag 'nakama_express.png' %>
-    </div>
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Resnik Cafe</p>
-      </div>
-      <%= image_tag 'resnik_cafe.png' %>
-    </div>
-
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Taste of India</p>
-      </div>
-      <%= image_tag 'taste_of_india.png' %>
-    </div>
-
-
-    <div class="location">CUC</div>
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>El Gallo de Oro</p>
-      </div>
-      <%= image_tag 'el_gallo_de_oro.png' %>
-    </div>
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Skibo</p>
-      </div>
-      <%= image_tag 'skibo.png' %>
-    </div>
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Entropy</p>
-      </div>
-      <%= image_tag 'entropy.png' %>
-    </div>
-
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Creperie</p>
-      </div>
-      <%= image_tag 'creperie.png' %>
-    </div>
-
+    <% @locations.each do |loc| %>
+      <div class="location"><%= loc.name %></div>
+      <% loc.eateries.each do |eat| %>
+        <div class="eatery<%= ' closed' unless eat.open? %>">
+          <div class="eatery-info">
+            <p><%= eat.name %></p>
+          </div>
+          <%= image_tag eat.name.parameterize.underscore %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div id="board">

@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require framework7
 //= require_tree .
+
+$("#open-checkbox").change(function() {
+  $("#eateries").toggleClass("open-only");
+});

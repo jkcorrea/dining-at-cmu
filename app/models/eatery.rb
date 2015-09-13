@@ -10,4 +10,8 @@ class Eatery < ActiveRecord::Base
     Eatery.joins(:open_blocks)
       .where("open_blocks.weekday = ? AND open_blocks.start_at < ? AND open_blocks.end_at > ?", day, time, time)
   end
+
+  def open?(at = Time.now)
+    Eatery.open(at).include?(self)
+  end
 end
