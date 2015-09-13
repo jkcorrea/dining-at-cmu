@@ -6,33 +6,17 @@
   </div>
 
   <div id="eateries">
-    <div class="location">Newell Simon</div>
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Asiana</p>
-      </div>
-      <%= image_tag 'asiana.png' %>
-    </div>
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Mitchell's</p>
-      </div>
-      <%= image_tag 'mitchells.png' %>
-    </div>
-
-    <div class="location">Resnik</div>
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>CM Cafe</p>
-      </div>
-      <%= image_tag 'mitchells.png' %>
-    </div>
-    <div class="eatery">
-      <div class="eatery-info">
-        <p>Taste of India</p>
-      </div>
-      <%= image_tag 'mitchells.png' %>
-    </div>
+    <% @locations.each do |loc| %>
+      <div class="location"><%= loc.name %></div>
+      <% loc.eateries.each do |eat| %>
+        <div class="eatery">
+          <div class="eatery-info">
+            <p><%= eat.name %></p>
+          </div>
+          <%= image_tag eat.name.parameterize.underscore %>
+        </div>
+      <% end %>
+    <% end %>
 
   </div>
 

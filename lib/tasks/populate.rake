@@ -21,7 +21,7 @@ namespace :db do
     gallo = Eatery.new(name: "El Gallo de Oro", location: uc)
     gallo.save!
 
-    cmc = Eatery.new(name: "Carnegie Mellon Cafe", location: resnik)
+    cmc = Eatery.new(name: "Resnik Cafe", location: resnik)
     cmc.save!
 
     india = Eatery.new(name: "Taste of India", location: resnik)
