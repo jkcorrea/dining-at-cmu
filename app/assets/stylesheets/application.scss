@@ -20,6 +20,8 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300|Roboto+Condensed:400,700,300);
 
+#eateries.open-only .closed { display: none !important; }
+
 #timeline {
   position: fixed;
   margin: 10px 0 0 0;
