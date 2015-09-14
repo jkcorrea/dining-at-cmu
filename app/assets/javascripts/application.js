@@ -15,6 +15,8 @@
 //= require framework7
 //= require_tree .
 
+var f7 = new Framework7();
+
 $("#open-checkbox").change(function() {
   $("#eateries").toggleClass("open-only");
 });

@@ -7,14 +7,14 @@
 
   <div id="eateries">
     <div class="location">Newell Simon</div>
-    
+
       <a href="#" data-popup=".popup-asiana" class="open-popup">
-      <div class="eatery">
-        <div class="eatery-info">
-          <p>Asiana</p>
+        <div class="eatery">
+          <div class="eatery-info">
+            <p>Asiana</p>
+          </div>
+          <%= image_tag 'asiana.png' %>
         </div>
-        <%= image_tag 'asiana.png' %>
-      </div>
       </a>
 
     <% @locations.each do |loc| %>
@@ -38,8 +38,8 @@
 </div>
 
 
-    <div class="popup popup-asiana">
-        <p>Asiana</p>
-        <a href="#" class="close-popup">Close popup</a>
-        <p>Lorem ipsum dolor ...</p>
-    </div>
+<div class="popup popup-asiana">
+  <p>Asiana</p>
+  <a href="#" class="close-popup">Close popup</a>
+  <p>Lorem ipsum dolor ...</p>
+</div>
