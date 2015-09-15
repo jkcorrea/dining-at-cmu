@@ -15,13 +15,12 @@
 //= require framework7
 //= require_tree .
 
-navigator.geolocation.getCurrentPosition(order_by_geoloc);
 
-function order_by_geoloc(geoloc) {
+navigator.geolocation.getCurrentPosition(function (geoloc) {
   if (!geoloc) return;
-
-
-}
+  var req_url = '/by_loc?lat=' + geoloc.coords.latitude + '&lon=' + geoloc.coords.longitude;
+  $.get(req_url, function(data) { $("#eateries").html(data.html); });
+});
 
 var f7 = new Framework7();
 

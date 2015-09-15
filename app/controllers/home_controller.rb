@@ -4,11 +4,13 @@ class HomeController < ApplicationController
     @user_loc = request.location
   end
 
-  def by_coords
-    @locations = Location.all # order by coords
+  def by_loc
+    lat = params["lat"]
+    lon = params["lon"]
+    @locations = Location.near([lat, lon], 1_000_000, order: 'distance') # order by coords
+    raw_html = render_to_string(partial: 'home/eateries')
     respond_to do |fmt|
-      fmt.json { render json: { success: true, html: render_to_string 'home/eateries' } }
-      fmt.html { }
+      fmt.json { render json: { success: true, html: raw_html } }
     end
   end
 end
