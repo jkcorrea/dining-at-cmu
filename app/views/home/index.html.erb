@@ -17,8 +17,16 @@
 </div>
 
 
-<div class="popup popup-asiana">
-  <p>Asiana</p>
-  <a href="#" class="close-popup">Close popup</a>
-  <p>Lorem ipsum dolor ...</p>
-</div>
+  <% @locations.each do |loc| %>
+    <% loc.eateries.each do |eat| %>
+        <div class="popup popup-<%= eat.name.parameterize %>">
+
+            <a href="#" class="close-popup">Close <%= eat.name %></a>
+            <h1><%= eat.name %></h1>
+            <p><%= eat.summary %>.</p>
+            <p>Location: <%= loc.name %></p>
+            <%= image_tag "menus/#{eat.name.parameterize.underscore}" %>
+            <%= image_tag "settings/#{eat.name.parameterize.underscore}" %>
+        </div>
+    <% end %>
+  <% end %>
