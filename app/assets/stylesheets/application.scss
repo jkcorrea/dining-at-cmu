@@ -94,6 +94,15 @@
           font-family: "Roboto"
         }
       }
+
+      .timeline-bar {
+        position: fixed;
+        margin-left: 23.5%;
+        margin-top: 8px;
+        height: 35px;
+        width: 100px;
+        background: black;
+      }
     }
   }
 
