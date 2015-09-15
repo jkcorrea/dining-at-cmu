@@ -5,13 +5,13 @@ namespace :db do
 
   task :populate => :environment do
   # Locations
-    resnik = Location.new(name: "Resnik")
+    resnik = Location.new(name: "Resnik", latitude: 40.442455, longitude: -79.939845)
     resnik.save!
 
-    uc = Location.new(name: "University Center")
+    uc = Location.new(name: "University Center", latitude: 40.443339, longitude: -79.941963)
     uc.save!
 
-    nsh = Location.new(name: "Newell Simon Hall")
+    nsh = Location.new(name: "Newell Simon Hall", latitude: 40.443385, longitude: -79.945649)
     nsh.save!
 
     # tepper = Location.new(name: "Tepper")

@@ -15,6 +15,14 @@
 //= require framework7
 //= require_tree .
 
+navigator.geolocation.getCurrentPosition(order_by_geoloc);
+
+function order_by_geoloc(geoloc) {
+  if (!geoloc) return;
+
+
+}
+
 var f7 = new Framework7();
 
 $("#open-checkbox").change(function() {

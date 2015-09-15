@@ -6,28 +6,8 @@
   </div>
 
   <div id="eateries">
-    <div class="location">Newell Simon</div>
-
-      <a href="#" data-popup=".popup-asiana" class="open-popup">
-        <div class="eatery">
-          <div class="eatery-info">
-            <p>Asiana</p>
-          </div>
-          <%= image_tag 'asiana.png' %>
-        </div>
-      </a>
-
-    <% @locations.each do |loc| %>
-      <div class="location"><%= loc.name %></div>
-      <% loc.eateries.each do |eat| %>
-        <div class="eatery<%= ' closed' unless eat.open? %>">
-          <div class="eatery-info">
-            <p><%= eat.name %></p>
-          </div>
-          <%= image_tag eat.name.parameterize.underscore %>
-        </div>
-      <% end %>
-    <% end %>
+  <p><%= @user_loc.coordinates %></p>
+    <%= render partial: 'home/eateries' %>
   </div>
 
   <div id="board">

@@ -1,0 +1,13 @@
+<% @locations.each do |loc| %>
+  <div class="location<%= ' closed' unless loc.eateries.select{|e| e.open?}.any? %>">
+    <%= loc.name %>
+  </div>
+  <% loc.eateries.each do |eat| %>
+    <div class="eatery<%= ' closed' unless eat.open? %>">
+      <div class="eatery-info">
+        <p><%= eat.name %></p>
+      </div>
+      <%= image_tag eat.name.parameterize.underscore %>
+    </div>
+  <% end %>
+<% end %>
