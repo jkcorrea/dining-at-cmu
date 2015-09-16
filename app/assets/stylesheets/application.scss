@@ -132,6 +132,14 @@
 .white-text {
   color: white;
   padding-right: 40px;
+  font-size: 10pt;
+}
+
+.left-color-white {
+  font-family: "Copperplate";
+  font-size: 17pt;
+  color: white;
+  font-style: bold;
 }
 
 .search-logo {
@@ -180,7 +188,13 @@
       }
 }
 
-h1, h3 {
+h3 {
+  text-align: center;
+  color: rgb(183,21,21);
+}
+
+h1 {
+  font-family: "Copperplate";
   text-align: center;
   color: rgb(183,21,21);
 }
