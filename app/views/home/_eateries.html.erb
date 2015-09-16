@@ -1,25 +1,26 @@
-<div id="time-keeper" data-seconds="<%= DateTime.now.seconds_since_midnight %>"
-<% @locations.each do |loc| %>
-  <div class="location<%= ' closed' unless loc.eateries.select{|e| e.open?}.any? %>">
-    <%= loc.name %>
-  </div>
-  <% loc.eateries.each do |eat| %>
-    <a href="#" data-popup=".popup-<%= eat.name.parameterize %>" class="open-popup">
-      <div class="eatery<%= ' closed' unless eat.open? %>">
-        <div class="eatery-info">
-          <p style="color: <%= eat.color %>;"><%= eat.name %></p>
-        </div>
-        <%= image_tag eat.name.parameterize.underscore %>
-
-        <% eat.open_blocks.each do |ob| %>
-          <% next if ob.weekday != Date.today.wday %>
-          <% start = seconds_to_offset(ob.start_at) %>
-          <div class="open-block"
-                data-start-x="<%= start %>"
-                style="width: <%= seconds_to_offset(ob.end_at) - start %>px; background: <%= eat.color %>;">
+<div id="time-keeper" data-seconds="<%= DateTime.now.seconds_since_midnight %>">
+  <% @locations.each do |loc| %>
+    <div class="location<%= ' closed' unless loc.eateries.select{|e| e.open?}.any? %>">
+      <%= loc.name %>
+    </div>
+    <% loc.eateries.each do |eat| %>
+      <a href="#" data-popup=".popup-<%= eat.name.parameterize %>" class="open-popup">
+        <div class="eatery<%= ' closed' unless eat.open? %>">
+          <div class="eatery-info">
+            <p style="color: <%= eat.color %>;"><%= eat.name %></p>
           </div>
-        <% end %>
-      </div>
-    </a>
+          <%= image_tag eat.name.parameterize.underscore %>
+
+          <% eat.open_blocks.each do |ob| %>
+            <% next if ob.weekday != Date.today.wday %>
+            <% start = seconds_to_offset(ob.start_at) %>
+            <div class="open-block"
+                  data-start-x="<%= start %>"
+                  style="width: <%= seconds_to_offset(ob.end_at) - start %>px; background: <%= eat.color %>;">
+            </div>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
   <% end %>
-<% end %>
+</div>

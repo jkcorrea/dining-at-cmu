@@ -21,6 +21,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300|Roboto+Condensed:400,700,300);
 
 #eateries.open-only .closed { display: none !important; }
+.hide { display: none !important; }
 
 #timeline {
   position: fixed;
@@ -134,8 +135,19 @@
   font-family: "Roboto";
   color: white;
 
-  #open-now-toggle { margin-right: 1rem;
-    input { vertical-align: middle; margin: 0; } }
+  .center {
+    width: 40%;
+    margin: 0 auto;
+    i { font-size: 8pt; margin-right: 5px; font-weight: lighter; }
+    ::-webkit-input-placeholder { color: #ccc; }
+    #searchbox { background: transparent; border: none; color: white;  }
+  }
+
+  #open-now-toggle {
+    margin-right: 1rem;
+    font-size: 11pt;
+    input { vertical-align: middle; margin: 0; width: 11px; }
+  }
 }
 
 .popup {

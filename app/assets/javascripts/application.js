@@ -15,20 +15,17 @@
 //= require framework7
 //= require_tree .
 var f7 = new Framework7();
-
 var UPDATE_INTERVAL = 1000 * 1;
 
+// Ask for user loc
 navigator.geolocation.getCurrentPosition(function (geoloc) {
   if (!geoloc) return;
   var req_url = "/by_loc?lat=" + geoloc.coords.latitude + "&lon=" + geoloc.coords.longitude;
   $.get(req_url, function(data) { $("#eateries").html(data.html); });
 });
 
-$("#open-now-toggle").on("click", function() {
-  $("#eateries").toggleClass("open-only");
-  $("#open-now-toggle input").prop("checked", $("#eateries").hasClass("open-only"));
-});
 
+// Timeline updates
 (function update_timeline() {
   var seconds_since_midnight = $("#time-keeper").data("seconds");
 
@@ -40,3 +37,18 @@ $("#open-now-toggle").on("click", function() {
   $("#time-keeper").data("seconds", seconds_since_midnight + (UPDATE_INTERVAL / 1000));
   setTimeout(update_timeline, UPDATE_INTERVAL);
 })();
+
+// Open now toggles
+$("#open-now-toggle").on("click", function() {
+  $("#eateries").toggleClass("open-only");
+  $("#open-now-toggle input").prop("checked", $("#eateries").hasClass("open-only"));
+});
+
+
+// Search bar toggle
+$("#search-button").on("click", function() {
+  $(".navbar .navbar-inner > div").toggleClass("hide");
+  $("#searchbox").focus();
+});
+
+$("#searchbox").blur(function() { $(".navbar .navbar-inner > div").toggleClass("hide"); })
