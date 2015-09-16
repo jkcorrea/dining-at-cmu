@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require framework7
 //= require_tree .
+var f7 = new Framework7();
 
+var UPDATE_INTERVAL = 1000 * 1;
 
 navigator.geolocation.getCurrentPosition(function (geoloc) {
   if (!geoloc) return;
@@ -22,8 +24,19 @@ navigator.geolocation.getCurrentPosition(function (geoloc) {
   $.get(req_url, function(data) { $("#eateries").html(data.html); });
 });
 
-var f7 = new Framework7();
 
 $("#open-checkbox").change(function() {
   $("#eateries").toggleClass("open-only");
 });
+
+(function update_timeline() {
+  var seconds_since_midnight = $("#time-keeper").data("seconds");
+
+  $(".open-block").each(function(i, elem) {
+    $(elem).css('left', $(elem).data('start-x') - (100 * seconds_since_midnight) / (60 * 60) + $("#now").offset().left);
+  });
+
+  // Update every minute
+  $("#time-keeper").data("seconds", seconds_since_midnight + (UPDATE_INTERVAL / 1000));
+  setTimeout(update_timeline, UPDATE_INTERVAL);
+})();

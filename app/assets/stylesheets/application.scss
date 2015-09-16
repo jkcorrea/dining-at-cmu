@@ -95,13 +95,12 @@
         }
       }
 
-      .timeline-bar {
-        position: fixed;
-        margin-left: 23.5%;
+      .open-block {
+        position: absolute;
         margin-top: 8px;
         height: 35px;
-        width: 100px;
         background: black;
+        z-index: -1;
       }
     }
   }

@@ -4,7 +4,11 @@ namespace :db do
   desc "Populate database with Eateries and related data"
 
   task :populate => :environment do
-  # Locations
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
+    Rake::Task['db:migrate'].invoke
+
+# Locations
     resnik = Location.new(name: "Resnik", latitude: 40.442455, longitude: -79.939845)
     resnik.save!
 
@@ -32,51 +36,60 @@ namespace :db do
     # wean = Location.new(name: "Wean")
     # wean.save!
 
-  # Eateries
+# Eateries
     asiana = Eatery.new(name: "Asiana",
                         location: nsh,
-                        summary: "Pan Asian Rice & Noodles")
+                        summary: "Pan Asian Rice & Noodles",
+                        color: "#E91E63")
     asiana.save!
 
     mitchells = Eatery.new(name: "Mitchells",
                         location: nsh,
-                        summary: "Soups, pizzas, hot entrées and salad bar")
+                        summary: "Soups, pizzas, hot entrées and salad bar",
+                        color: "#F44336")
     mitchells.save!
 
     nakama = Eatery.new(name: "Nakama Express",
                         location: resnik,
-                        summary: "Freshly-made sushi")
+                        summary: "Freshly-made sushi",
+                        color: "#3F51B5")
     nakama.save!
 
     cmc = Eatery.new(name: "Resnik Cafe",
                         location: resnik,
-                        summary: "Fresh hot breakfast all day")
+                        summary: "Fresh hot breakfast all day",
+                        color: "#7E57C2")
     cmc.save!
 
     india = Eatery.new(name: "Taste of India",
                         location: resnik,
-                        summary: "Indian Cuisine")
+                        summary: "Indian Cuisine",
+                        color: "#2196F3")
     india.save!
 
     gallo = Eatery.new(name: "El Gallo de Oro",
                         location: uc,
-                        summary: "Authentic Mexican flavors made with fresh ingredients")
+                        summary: "Authentic Mexican flavors made with fresh ingredients",
+                        color: "#009688")
     gallo.save!
 
     skibo = Eatery.new(name: "Skibo",
                         location: uc,
-                        summary: "Gourmet sandwiches, pizza and soups")
+                        summary: "Gourmet sandwiches, pizza and soups",
+                        color: "#B0BEC5")
     skibo.save!
 
     entropy = Eatery.new(name: "Entropy",
                         location: uc,
-                        summary: "Campus convenience store")
+                        summary: "Campus convenience store",
+                        color: "#FF9800")
     entropy.save!
 
 
     creperie = Eatery.new(name: "Creperie",
                         location: uc,
-                        summary: "Freshly prepared entrée and dessert crepes")
+                        summary: "Freshly prepared entrée and dessert crepes",
+                        color: "#A1887F")
     creperie.save!
 
     # exchange = Eatery.new(name: "The Exchange",
@@ -89,7 +102,7 @@ namespace :db do
     #                     summary: "Espresso, cappuccino and Italian pastries")
     # la_prima.save!
 
-  # Open Blocks
+# Open Blocks
     OpenBlocks::GALLO.each_with_index do |daily_block, day|
       throw "Time block syntax error! Expected an even number of open/close times." if daily_block.length.odd?
       daily_block.each_slice(2) do |open_block|
@@ -158,6 +171,42 @@ namespace :db do
         o.end_at = open_block[1]
         o.weekday = day
         o.eatery = india
+        o.save!
+      end
+    end
+
+    OpenBlocks::NAKAMA.each_with_index do |daily_block, day|
+      throw "Time block syntax error! Expected an even number of open/close times." if daily_block.length.odd?
+      daily_block.each_slice(2) do |open_block|
+        o = OpenBlock.new
+        o.start_at = open_block[0]
+        o.end_at = open_block[1]
+        o.weekday = day
+        o.eatery = nakama
+        o.save!
+      end
+    end
+
+    OpenBlocks::ASIANA.each_with_index do |daily_block, day|
+      throw "Time block syntax error! Expected an even number of open/close times." if daily_block.length.odd?
+      daily_block.each_slice(2) do |open_block|
+        o = OpenBlock.new
+        o.start_at = open_block[0]
+        o.end_at = open_block[1]
+        o.weekday = day
+        o.eatery = asiana
+        o.save!
+      end
+    end
+
+    OpenBlocks::MITCHELLS.each_with_index do |daily_block, day|
+      throw "Time block syntax error! Expected an even number of open/close times." if daily_block.length.odd?
+      daily_block.each_slice(2) do |open_block|
+        o = OpenBlock.new
+        o.start_at = open_block[0]
+        o.end_at = open_block[1]
+        o.weekday = day
+        o.eatery = mitchells
         o.save!
       end
     end
