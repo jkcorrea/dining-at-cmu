@@ -23,10 +23,13 @@
 
             <a href="#" class="close-popup">Close <%= eat.name %></a>
             <h1><%= eat.name %></h1>
-            <p><%= eat.summary %>.</p>
-            <p>Location: <%= loc.name %></p>
-            <%= image_tag "menus/#{eat.name.parameterize.underscore}" %>
-            <%= image_tag "settings/#{eat.name.parameterize.underscore}" %>
+            <h3><%= eat.summary %>.</br>Location: <%= loc.name %></h3>
+              <div class="menu">
+                <%= image_tag "menus/#{eat.name.parameterize.underscore}" %>
+              </div>
+              <div class="setting">
+                <%= image_tag "settings/#{eat.name.parameterize.underscore}" %>
+              </div>
         </div>
     <% end %>
   <% end %>
