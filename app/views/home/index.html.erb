@@ -11,22 +11,9 @@
     <div class="ruler"></div>
   </div>
 
-  <div id="eateries" class="bg-gray">
-    <%= render partial: 'home/eateries' %>
+  <div id="eateries" class="bg-gray open-only">
+    <%= render partial: "home/eateries" %>
   </div>
 </div>
 
-
-  <% @locations.each do |loc| %>
-    <% loc.eateries.each do |eat| %>
-        <div class="popup popup-<%= eat.name.parameterize %>">
-
-            <a href="#" class="close-popup">Close <%= eat.name %></a>
-            <h1><%= eat.name %></h1>
-            <p><%= eat.summary %>.</p>
-            <p>Location: <%= loc.name %></p>
-            <%= image_tag "menus/#{eat.name.parameterize.underscore}" %>
-            <%= image_tag "settings/#{eat.name.parameterize.underscore}" %>
-        </div>
-    <% end %>
-  <% end %>
+<%= render partial: "home/eateries_detail" %>

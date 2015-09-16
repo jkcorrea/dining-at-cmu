@@ -20,20 +20,20 @@ var UPDATE_INTERVAL = 1000 * 1;
 
 navigator.geolocation.getCurrentPosition(function (geoloc) {
   if (!geoloc) return;
-  var req_url = '/by_loc?lat=' + geoloc.coords.latitude + '&lon=' + geoloc.coords.longitude;
+  var req_url = "/by_loc?lat=" + geoloc.coords.latitude + "&lon=" + geoloc.coords.longitude;
   $.get(req_url, function(data) { $("#eateries").html(data.html); });
 });
 
-
-$("#open-checkbox").change(function() {
+$("#open-now-toggle").on("click", function() {
   $("#eateries").toggleClass("open-only");
+  $("#open-now-toggle input").prop("checked", $("#eateries").hasClass("open-only"));
 });
 
 (function update_timeline() {
   var seconds_since_midnight = $("#time-keeper").data("seconds");
 
   $(".open-block").each(function(i, elem) {
-    $(elem).css('left', $(elem).data('start-x') - (100 * seconds_since_midnight) / (60 * 60) + $("#now").offset().left);
+    $(elem).css("left", $(elem).data("start-x") - (100 * seconds_since_midnight) / (60 * 60) + $("#now").offset().left);
   });
 
   // Update every minute

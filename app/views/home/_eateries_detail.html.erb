@@ -1,0 +1,11 @@
+<% @locations.each do |loc| %>
+  <% loc.eateries.each do |eat| %>
+    <div class="popup popup-<%= eat.name.parameterize %>">
+      <a href="#" class="close-popup"><%= fa_icon "times" %></a>
+      <h1><%= eat.name %></h1>
+      <h3><%= eat.summary %>.</br>Location: <%= loc.name %></h3>
+      <div class="menu"><%= image_tag "menus/#{eat.name.parameterize.underscore}" %></div>
+      <div class="setting"><%= image_tag "settings/#{eat.name.parameterize.underscore}" %></div>
+    </div>
+  <% end %>
+<% end %>
